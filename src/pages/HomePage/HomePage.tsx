@@ -30,7 +30,15 @@ export const HomePage = () => {
           <RepeatIcon />
           Try Again
         </Button>
+        <Button variant="secondary" size="lg" isWide disabled>
+          <RepeatIcon />
+          Try Again
+        </Button>
         <Button variant="text">
+          Copy to clipboard
+          <CopyIcon />
+        </Button>
+        <Button variant="text" disabled>
           Copy to clipboard
           <CopyIcon />
         </Button>

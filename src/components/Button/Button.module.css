@@ -63,3 +63,12 @@
   --btn-text-color: var(--color-text-disabled);
   --btn-border-color: var(--color-primary-disabled);
 }
+
+.root.secondary:disabled {
+  --btn-text-color: var(--color-text-disabled);
+  --btn-border-color: var(--color-primary-disabled);
+}
+
+.root.text:disabled {
+  --btn-text-color: var(--color-text-disabled);
+}
