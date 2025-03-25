@@ -1,0 +1,65 @@
+.root {
+  --btn-width: auto;
+  --btn-bg-color: var(--color-primary);
+  --btn-text-color: var(--color-on-primary);
+  --btn-border-color: var(--color-primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  width: var(--btn-width);
+  padding: var(--btn-padding);
+  border: solid 1px var(--btn-border-color);
+  border-radius: 6px;
+  color: var(--btn-text-color);
+  background: var(--btn-bg-color);
+}
+
+.root svg {
+  width: var(--btn-icon-size);
+  height: var(--btn-icon-size);
+}
+
+.md {
+  --btn-padding: 10px 18px;
+  --btn-icon-size: 20px;
+  --btn-gap: 8px;
+}
+
+.lg {
+  --btn-padding: 16px 28px;
+  --btn-icon-size: 24px;
+  --btn-gap: 12px;
+}
+
+.secondary {
+  --btn-bg-color: transparent;
+  --btn-text-color: var(--color-text-primary);
+  --btn-border-color: var(--color-border);
+}
+
+.text {
+  --btn-bg-color: transparent;
+  --btn-text-color: var(--color-text-secondary);
+  --btn-border-color: transparent;
+  --btn-padding: 0;
+  --btn-gap: 8px;
+}
+
+.icon {
+  --btn-bg-color: transparent;
+  --btn-text-color: var(--color-text-primary);
+  --btn-border-color: var(--color-border);
+  --btn-padding: 10px;
+}
+
+.isWide {
+  --btn-width: 100%;
+}
+
+.root.primary:disabled {
+  --btn-bg-color: var(--color-primary-disabled);
+  --btn-text-color: var(--color-text-disabled);
+  --btn-border-color: var(--color-primary-disabled);
+}

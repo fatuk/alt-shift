@@ -4,6 +4,7 @@ import "normalize.css";
 
 import "styles/common.css";
 import "styles/fonts.css";
+import "styles/colors.css";
 
 import { App } from "components/App";
 import { BrowserRouter } from "react-router-dom";
