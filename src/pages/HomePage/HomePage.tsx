@@ -5,12 +5,12 @@ import RepeatIcon from "icons/repeat.svg";
 import CopyIcon from "icons/copy.svg";
 import HomeIcon from "icons/home.svg";
 
-import typography from "styles/typography.module.css";
+import { MainHeader } from "components/MainHeader";
 
 export const HomePage = () => {
   return (
     <div>
-      <h1 className={typography.h1}>HomePage</h1>
+      <MainHeader />
       <Layout align="top-left" padding="20 20 20 20" gap="20">
         <Button size="md">
           <PlusIcon />

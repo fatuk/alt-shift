@@ -1,5 +1,6 @@
 .root {
   --btn-width: auto;
+  --btn-height: auto;
   --btn-bg-color: var(--color-primary);
   --btn-text-color: var(--color-on-primary);
   --btn-border-color: var(--color-primary);
@@ -9,6 +10,7 @@
   justify-content: center;
   gap: var(--btn-gap);
   width: var(--btn-width);
+  height: var(--btn-height);
   padding: var(--btn-padding);
   border: solid 1px var(--btn-border-color);
   border-radius: 6px;
@@ -22,12 +24,14 @@
 }
 
 .md {
+  --btn-height: 44px;
   --btn-padding: 10px 18px;
   --btn-icon-size: 20px;
   --btn-gap: 8px;
 }
 
 .lg {
+  --btn-height: 60px;
   --btn-padding: 16px 28px;
   --btn-icon-size: 24px;
   --btn-gap: 12px;

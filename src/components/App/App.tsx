@@ -7,7 +7,7 @@ import "styles/common.css";
 
 export const App = () => {
   return (
-    <>
+    <div className="container">
       <Suspense fallback={<>Loading...</>}>
         <Routes>
           {routes.map(({ path, component }) => {
@@ -20,6 +20,6 @@ export const App = () => {
           })}
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 };
