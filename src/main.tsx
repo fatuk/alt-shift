@@ -2,6 +2,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "normalize.css";
 
+import "styles/common.css";
+import "styles/fonts.css";
+
 import { App } from "components/App";
 import { BrowserRouter } from "react-router-dom";
 

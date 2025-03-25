@@ -1,0 +1,47 @@
+.h1 {
+  font-family: "Fixel Display", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-family: "Fixel Display", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.label1 {
+  font-family: "Fixel Text", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+
+.text {
+  font-family: "Fixel Text", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+
+.button1 {
+  font-family: "Fixel Text", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+
+.button2 {
+  font-family: "Fixel Text", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}

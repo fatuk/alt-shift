@@ -14,7 +14,8 @@
       "stores/*": ["./src/stores/*"],
       "hooks/*": ["./src/hooks/*"],
       "helpers/*": ["./src/helpers/*"],
-      "constants/*": ["./src/constants/*"]
+      "constants/*": ["./src/constants/*"],
+      "icons/*": ["./src/icons/*"]
     },
 
     /* Bundler mode */

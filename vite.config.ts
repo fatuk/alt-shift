@@ -2,13 +2,21 @@ import { defineConfig } from "vite";
 import path from "path";
 import react from "@vitejs/plugin-react";
 import dynamicImport from "vite-plugin-dynamic-import";
+import createSvgSpritePlugin from "vite-plugin-svg-sprite";
 
 const getHash = (s: string) =>
   s.split("").reduce((a, b) => ((a << 5) - a + b.charCodeAt(0)) | 0, 0);
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), dynamicImport()],
+  plugins: [
+    react(),
+    dynamicImport(),
+    createSvgSpritePlugin({
+      exportType: "react",
+      include: "**/icons/*.svg",
+    }),
+  ],
   resolve: {
     alias: {
       components: path.resolve(__dirname, "src/components"),
@@ -19,6 +27,7 @@ export default defineConfig({
       hooks: path.resolve(__dirname, "src/hooks"),
       helpers: path.resolve(__dirname, "src/helpers"),
       constants: path.resolve(__dirname, "./src/constants"),
+      icons: path.resolve(__dirname, "./src/icons"),
     },
   },
   base: "",
