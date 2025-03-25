@@ -1,1 +1,0 @@
-export { CounterSmall } from './CounterSmall';

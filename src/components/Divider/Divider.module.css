@@ -1,0 +1,6 @@
+.root {
+  display: flex;
+  height: 0;
+  border-bottom: solid 1px var(--color-border);
+  width: 100%;
+}

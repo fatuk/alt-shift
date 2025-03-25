@@ -1,51 +1,39 @@
 import { Button } from "components/Button";
 import { Layout } from "components/Layout";
+
+import typography from "styles/typography.module.css";
 import PlusIcon from "icons/plus.svg";
 import RepeatIcon from "icons/repeat.svg";
 import CopyIcon from "icons/copy.svg";
 import HomeIcon from "icons/home.svg";
 
 import { MainHeader } from "components/MainHeader";
+import { useNavigate } from "react-router-dom";
+import { Divider } from "components/Divider";
+import { Jumbotron } from "components/Jumbotron";
 
 export const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <Layout align="top-left" isColumn isWide gap="32">
       <MainHeader />
-      <Layout align="top-left" padding="20 20 20 20" gap="20">
-        <Button size="md">
-          <PlusIcon />
-          Create New
-        </Button>
-        <Button size="md" disabled>
-          <PlusIcon />
-          Create New
-        </Button>
-        <Button size="lg">
-          <PlusIcon />
-          Create New
-        </Button>
+      <Layout align="top-left" isColumn isWide>
+        <Layout
+          align="top-left"
+          isWide
+          justify="space-between"
+          padding="0 0 16 0"
+        >
+          <div className={typography.h1}>Applications</div>
+          <Button size="md" onClick={() => navigate("/new-application")}>
+            <PlusIcon />
+            Create New
+          </Button>
+        </Layout>
+        <Divider />
       </Layout>
-      <Layout align="top-left" padding="20 20 20 20" gap="20" isColumn>
-        <Button variant="secondary" size="lg" isWide>
-          <RepeatIcon />
-          Try Again
-        </Button>
-        <Button variant="secondary" size="lg" isWide disabled>
-          <RepeatIcon />
-          Try Again
-        </Button>
-        <Button variant="text">
-          Copy to clipboard
-          <CopyIcon />
-        </Button>
-        <Button variant="text" disabled>
-          Copy to clipboard
-          <CopyIcon />
-        </Button>
-        <Button variant="icon">
-          <HomeIcon />
-        </Button>
-      </Layout>
-    </div>
+      <Jumbotron />
+    </Layout>
   );
 };

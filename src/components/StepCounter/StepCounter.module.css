@@ -1,0 +1,50 @@
+.root {
+  display: flex;
+  flex-direction: var(--counter-direction);
+  align-items: center;
+  gap: var(--counter-gap);
+}
+
+.label {
+  display: flex;
+  order: var(--counter-label-order);
+  color: var(--color-text-tertiary);
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: var(--counter-step-width);
+  height: 8px;
+  border-radius: 4px;
+  background: var(--color-text-primary);
+  margin-right: 4px;
+  opacity: 0.24;
+}
+
+.dotFilled {
+  opacity: 1;
+}
+
+.check svg {
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+.sm {
+  --counter-direction: row;
+  --counter-gap: 16px;
+  --counter-label-order: 0;
+  --counter-step-width: 8px;
+}
+
+.md {
+  --counter-direction: column;
+  --counter-gap: 8px;
+  --counter-label-order: 1;
+  --counter-step-width: 32px;
+}

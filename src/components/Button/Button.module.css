@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: center;
   gap: var(--btn-gap);
+  flex-shrink: 0;
+  align-self: center;
   width: var(--btn-width);
   height: var(--btn-height);
   padding: var(--btn-padding);
@@ -56,6 +58,7 @@
   --btn-text-color: var(--color-text-primary);
   --btn-border-color: var(--color-border);
   --btn-padding: 10px;
+  --btn-width: var(--btn-height);
 }
 
 .isWide {
