@@ -1,0 +1,36 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--color-tile-bg);
+  color: var(--color-text-tertiary);
+}
+
+.content {
+  position: relative;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 100%;
+}
+
+.content:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(242, 244, 247, 0) 0%, #f2f4f7 100%);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  padding-top: 16px;
+  margin-top: auto;
+}

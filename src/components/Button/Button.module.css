@@ -18,6 +18,7 @@
   border-radius: 6px;
   color: var(--btn-text-color);
   background: var(--btn-bg-color);
+  cursor: pointer;
 }
 
 .root svg {
@@ -51,6 +52,7 @@
   --btn-border-color: transparent;
   --btn-padding: 0;
   --btn-gap: 8px;
+  --btn-height: auto;
 }
 
 .icon {

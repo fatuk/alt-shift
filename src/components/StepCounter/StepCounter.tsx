@@ -4,6 +4,7 @@ import typography from "styles/typography.module.css";
 import CheckIcon from "icons/check.svg";
 
 import styles from "./StepCounter.module.css";
+import { USER_GOAL_APPLICATION_COUNT } from "constants/settings";
 
 type Props = {
   maxCount?: number;
@@ -12,7 +13,7 @@ type Props = {
 };
 
 export const StepCounter = ({
-  maxCount = 5,
+  maxCount = USER_GOAL_APPLICATION_COUNT,
   currentCount,
   size = "sm",
 }: Props) => {

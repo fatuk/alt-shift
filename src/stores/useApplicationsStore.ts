@@ -1,10 +1,12 @@
+import { nanoid } from "nanoid";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { Application } from "stores/types/Application";
 
 type ApplicationsStore = {
-  applications: string[];
-  addApplication: (item: string) => void;
-  removeApplication: (index: number) => void;
+  applications: Application[];
+  addApplication: (content: string) => void;
+  removeApplication: (id: string) => void;
   clearApplications: () => void;
 };
 
@@ -12,13 +14,20 @@ export const useApplicationsStore = create<ApplicationsStore>()(
   persist(
     (set) => ({
       applications: [],
-      addApplication: (application) =>
+      addApplication: (content) =>
         set((state) => ({
-          applications: [...state.applications, application],
+          applications: [
+            ...state.applications,
+            {
+              id: nanoid(),
+              content,
+              createdAt: new Date().toISOString(),
+            },
+          ],
         })),
-      removeApplication: (index) =>
+      removeApplication: (id) =>
         set((state) => ({
-          applications: state.applications.filter((_, i) => i !== index),
+          applications: state.applications.filter((item) => item.id !== id),
         })),
       clearApplications: () => set({ applications: [] }),
     }),
