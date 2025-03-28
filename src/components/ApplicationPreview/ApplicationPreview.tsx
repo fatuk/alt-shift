@@ -12,15 +12,21 @@ import { useApplicationsStore } from "stores/useApplicationsStore";
 import typography from "styles/typography.module.css";
 
 import styles from "./ApplicationPreview.module.css";
+import { Loader } from "components/Loader";
 
 type Props = {
   application: Application;
+  isPending?: boolean;
   size?: "tile" | "full";
 };
 
 const COPY_STATE_TIMEOUT = 5000;
 
-export const ApplicationPreview = ({ application, size = "tile" }: Props) => {
+export const ApplicationPreview = ({
+  application,
+  isPending,
+  size = "tile",
+}: Props) => {
   const { removeApplication } = useApplicationsStore();
   const [isCopied, setIsCopied] = useState(false);
 
@@ -41,25 +47,37 @@ export const ApplicationPreview = ({ application, size = "tile" }: Props) => {
 
   return (
     <div className={cn(styles.root, styles[size])}>
-      <div className={cn(styles.content, typography.text)}>
-        {application.content}
-      </div>
-      <footer className={styles.footer}>
-        <div className={styles.deleteBtn}>
-          <Button
-            variant="text"
-            onClick={() => removeApplication(application.id)}
+      {!isPending ? (
+        <>
+          <div
+            className={cn(styles.content, typography.text, {
+              [styles.hasClamp]: size === "tile",
+            })}
           >
-            <TrashIcon />
-            Delete
-          </Button>
+            {application.content}
+          </div>
+          <footer className={styles.footer}>
+            <div className={styles.deleteBtn}>
+              <Button
+                variant="text"
+                onClick={() => removeApplication(application.id)}
+              >
+                <TrashIcon />
+                Delete
+              </Button>
+            </div>
+            <Button variant="text" onClick={handleCopy}>
+              {isCopied ? <CheckIcon /> : null}
+              Copy to clipboard
+              <CopyIcon />
+            </Button>
+          </footer>
+        </>
+      ) : (
+        <div className={styles.loader}>
+          <Loader />
         </div>
-        <Button variant="text" onClick={handleCopy}>
-          {isCopied ? <CheckIcon /> : null}
-          Copy to clipboard
-          <CopyIcon />
-        </Button>
-      </footer>
+      )}
     </div>
   );
 };

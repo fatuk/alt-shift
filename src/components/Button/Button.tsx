@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import cn from "classnames";
 
+import LoadingIcon from "icons/loading.svg";
 import typography from "styles/typography.module.css";
 
 import styles from "./Button.module.css";
@@ -13,6 +14,7 @@ type Props = Omit<
   size?: "md" | "lg";
   variant?: "primary" | "secondary" | "text" | "icon";
   isWide?: boolean;
+  isPending?: boolean;
   onClick?: () => void;
 };
 
@@ -20,6 +22,7 @@ export const Button = ({
   children,
   size = "md",
   variant = "primary",
+  isPending,
   isWide = false,
   onClick,
   ...rest
@@ -32,7 +35,13 @@ export const Button = ({
 
   return (
     <button className={classNames} onClick={onClick} {...rest}>
-      {children}
+      {isPending ? (
+        <div className={styles.loader}>
+          <LoadingIcon />
+        </div>
+      ) : (
+        children
+      )}
     </button>
   );
 };

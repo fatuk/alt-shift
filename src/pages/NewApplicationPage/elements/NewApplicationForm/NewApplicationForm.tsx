@@ -5,18 +5,21 @@ import cn from "classnames";
 import { Form, InputField, TextareaField } from "components/Form";
 import { Layout } from "components/Layout";
 import { Button } from "components/Button";
+import { Divider } from "components/Divider";
+
+import RepeatIcon from "icons/repeat.svg";
 
 import typography from "styles/typography.module.css";
 import { NewApplicationFormValues, formValidator } from "./formValidator";
 
 import styles from "./NewApplicationForm.module.css";
-import { Divider } from "components/Divider";
 
 type Props = {
+  isPending?: boolean;
   onSubmit: (data: NewApplicationFormValues) => void;
 };
 
-export const NewApplicationForm = ({ onSubmit }: Props) => {
+export const NewApplicationForm = ({ isPending, onSubmit }: Props) => {
   const formMethods = useForm<NewApplicationFormValues>({
     resolver: zodResolver(formValidator),
   });
@@ -68,8 +71,20 @@ export const NewApplicationForm = ({ onSubmit }: Props) => {
           maxLength={1200}
           rows={10}
         />
-        <Button isWide size="lg" disabled={!formState.isValid}>
-          Generate Now
+        <Button
+          isPending={isPending}
+          variant={formState.isSubmitted ? "secondary" : "primary"}
+          isWide
+          size="lg"
+          disabled={!formState.isValid || isPending}
+        >
+          {formState.isSubmitted ? (
+            <>
+              <RepeatIcon /> Try Again
+            </>
+          ) : (
+            "Generate Now"
+          )}
         </Button>
       </Layout>
     </Form>

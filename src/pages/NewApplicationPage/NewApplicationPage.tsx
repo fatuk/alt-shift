@@ -1,5 +1,4 @@
 import { MainHeader } from "components/MainHeader";
-import { useApplicationsStore } from "stores/useApplicationsStore";
 import {
   NewApplicationForm,
   NewApplicationFormValues,
@@ -7,31 +6,40 @@ import {
 import { Layout } from "components/Layout";
 import { ApplicationPreview } from "components/ApplicationPreview";
 import { Jumbotron } from "components/Jumbotron";
+import { useCoverLetterGenerator } from "hooks/api/useCoverLetterGenerator";
+import { useState } from "react";
+
+import styles from "./NewApplicationPage.module.css";
 
 export const NewApplicationPage = () => {
-  const { addApplication } = useApplicationsStore();
-
-  const handleSubmit = (data: NewApplicationFormValues) => {
-    console.log(data);
+  const [previewText, setPreviewText] = useState("");
+  const { mutateAsync, isPending } = useCoverLetterGenerator();
+  const handleSubmit = async (data: NewApplicationFormValues) => {
+    setPreviewText("");
+    const coverLetterPreview = await mutateAsync(data);
+    setPreviewText(coverLetterPreview);
   };
 
   return (
     <Layout align="top-left" gap="32" isColumn>
       <MainHeader />
       <Layout align="top-left" isWide gap="32">
-        <Layout align="top-left" isWide>
-          <NewApplicationForm onSubmit={handleSubmit} />
-        </Layout>
-        <Layout align="top-left" isWide hasFullHeight>
+        <div className={styles.column}>
+          <NewApplicationForm onSubmit={handleSubmit} isPending={isPending} />
+        </div>
+        <div className={styles.column}>
           <ApplicationPreview
             size="full"
+            isPending={isPending}
             application={{
               id: "1",
-              content: "Hello world!",
+              content:
+                previewText ||
+                "Your personalized job application will appear here...",
               createdAt: new Date().toISOString(),
             }}
           />
-        </Layout>
+        </div>
       </Layout>
       <Jumbotron />
     </Layout>

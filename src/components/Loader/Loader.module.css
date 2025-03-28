@@ -1,0 +1,18 @@
+.root {
+  animation: bouncing 2s ease-in-out infinite;
+}
+
+@keyframes bouncing {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
