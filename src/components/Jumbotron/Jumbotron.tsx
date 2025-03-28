@@ -9,10 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { StepCounter } from "components/StepCounter";
 import { useApplicationsStore } from "stores/useApplicationsStore";
 import { Layout } from "components/Layout";
+import { USER_GOAL_APPLICATION_COUNT } from "constants/settings";
 
 export const Jumbotron = () => {
   const navigate = useNavigate();
   const { applications } = useApplicationsStore();
+  const isJumbotronVisible = applications.length < USER_GOAL_APPLICATION_COUNT;
+
+  if (!isJumbotronVisible) return null;
 
   return (
     <div className={styles.root}>

@@ -11,16 +11,13 @@ import { MainHeader } from "components/MainHeader";
 import { Divider } from "components/Divider";
 import { Jumbotron } from "components/Jumbotron";
 import { useApplicationsStore } from "stores/useApplicationsStore";
-import { ApplicationTile } from "components/ApplicationTile";
 
 import styles from "./HomePage.module.css";
-import { USER_GOAL_APPLICATION_COUNT } from "constants/settings";
+import { ApplicationPreview } from "components/ApplicationPreview";
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const { applications } = useApplicationsStore();
-
-  const isJumbotronVisible = applications.length < USER_GOAL_APPLICATION_COUNT;
 
   return (
     <Layout align="top-left" isColumn isWide gap="32">
@@ -43,11 +40,11 @@ export const HomePage = () => {
         </Layout>
         <div className={styles.tiles}>
           {applications.map((application) => (
-            <ApplicationTile key={nanoid()} application={application} />
+            <ApplicationPreview key={nanoid()} application={application} />
           ))}
         </div>
       </Layout>
-      {isJumbotronVisible ? <Jumbotron /> : null}
+      <Jumbotron />
     </Layout>
   );
 };

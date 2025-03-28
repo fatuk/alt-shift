@@ -1,4 +1,10 @@
-import { ChangeEvent, InputHTMLAttributes, ReactNode } from "react";
+import {
+  ChangeEvent,
+  ForwardedRef,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+} from "react";
 import cn from "classnames";
 
 import typographyStyles from "styles/typography.module.css";
@@ -9,7 +15,10 @@ type Props = Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
   onChange?: (value: string) => void;
 };
 
-export const Input = ({ label, onChange = () => {}, ...rest }: Props) => {
+const Input = (
+  { label, onChange = () => {}, ...rest }: Props,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     onChange(value);
@@ -22,6 +31,7 @@ export const Input = ({ label, onChange = () => {}, ...rest }: Props) => {
         </span>
       ) : null}
       <input
+        ref={ref}
         className={cn(typographyStyles.input, styles.input)}
         onChange={handleChange}
         {...rest}
@@ -29,3 +39,6 @@ export const Input = ({ label, onChange = () => {}, ...rest }: Props) => {
     </label>
   );
 };
+
+const refForwarded = forwardRef<HTMLInputElement, Props>(Input);
+export { refForwarded as Input };

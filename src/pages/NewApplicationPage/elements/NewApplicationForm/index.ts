@@ -1,1 +1,2 @@
-export { NewApplicationForm } from './NewApplicationForm';
+export { NewApplicationForm } from "./NewApplicationForm";
+export type { NewApplicationFormValues } from "./formValidator";

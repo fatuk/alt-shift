@@ -1,1 +1,0 @@
-export { ApplicationTile } from './ApplicationTile';

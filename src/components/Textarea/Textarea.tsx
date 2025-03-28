@@ -1,5 +1,7 @@
 import {
   ChangeEvent,
+  ForwardedRef,
+  forwardRef,
   ReactNode,
   TextareaHTMLAttributes,
   useState,
@@ -14,12 +16,10 @@ type Props = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> & {
   onChange?: (value: string) => void;
 };
 
-export const Textarea = ({
-  label,
-  maxLength,
-  onChange = () => {},
-  ...rest
-}: Props) => {
+const Textarea = (
+  { label, maxLength, onChange = () => {}, ...rest }: Props,
+  ref: ForwardedRef<HTMLTextAreaElement>
+) => {
   const [currentLength, setCurrentLength] = useState(0);
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,6 +44,7 @@ export const Textarea = ({
       ) : null}
       <div className={styles.fieldWrapper}>
         <textarea
+          ref={ref}
           className={cn(typographyStyles.input, styles.textarea)}
           onChange={handleChange}
           maxLength={maxLength ? maxLength + 1000 : undefined}
@@ -58,3 +59,6 @@ export const Textarea = ({
     </label>
   );
 };
+
+const refForwarded = forwardRef<HTMLTextAreaElement, Props>(Textarea);
+export { refForwarded as Textarea };

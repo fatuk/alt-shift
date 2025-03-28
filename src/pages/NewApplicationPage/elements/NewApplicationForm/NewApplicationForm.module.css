@@ -1,3 +1,11 @@
-.root {
+.title {
+  color: var(--color-text-tertiary);
+}
 
+.title:first-letter {
+  text-transform: uppercase;
+}
+
+.isFilled {
+  color: var(--color-text-primary);
 }

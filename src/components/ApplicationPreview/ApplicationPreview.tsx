@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import cn from "classnames";
 
 import TrashIcon from "icons/trash.svg";
@@ -7,19 +8,19 @@ import CheckIcon from "icons/check.svg";
 import { Button } from "components/Button";
 
 import { Application } from "stores/types/Application";
+import { useApplicationsStore } from "stores/useApplicationsStore";
 import typography from "styles/typography.module.css";
 
-import styles from "./ApplicationTile.module.css";
-import { useApplicationsStore } from "stores/useApplicationsStore";
-import { useEffect, useState } from "react";
+import styles from "./ApplicationPreview.module.css";
 
 type Props = {
   application: Application;
+  size?: "tile" | "full";
 };
 
 const COPY_STATE_TIMEOUT = 5000;
 
-export const ApplicationTile = ({ application }: Props) => {
+export const ApplicationPreview = ({ application, size = "tile" }: Props) => {
   const { removeApplication } = useApplicationsStore();
   const [isCopied, setIsCopied] = useState(false);
 
@@ -39,18 +40,20 @@ export const ApplicationTile = ({ application }: Props) => {
   }, [isCopied]);
 
   return (
-    <div className={styles.root}>
+    <div className={cn(styles.root, styles[size])}>
       <div className={cn(styles.content, typography.text)}>
         {application.content}
       </div>
       <footer className={styles.footer}>
-        <Button
-          variant="text"
-          onClick={() => removeApplication(application.id)}
-        >
-          <TrashIcon />
-          Delete
-        </Button>
+        <div className={styles.deleteBtn}>
+          <Button
+            variant="text"
+            onClick={() => removeApplication(application.id)}
+          >
+            <TrashIcon />
+            Delete
+          </Button>
+        </div>
         <Button variant="text" onClick={handleCopy}>
           {isCopied ? <CheckIcon /> : null}
           Copy to clipboard
