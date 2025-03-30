@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
+import cn from "classnames";
 
 import { Button } from "components/Button";
 import { Layout } from "components/Layout";
@@ -30,7 +31,7 @@ export const HomePage = () => {
             isWide
             padding="0 0 16 0"
           >
-            <h1 className={typography.h1}>Applications</h1>
+            <h1 className={cn(typography.h1, styles.title)}>Applications</h1>
             <Button size="md" onClick={() => navigate("/new-application")}>
               <PlusIcon />
               Create New

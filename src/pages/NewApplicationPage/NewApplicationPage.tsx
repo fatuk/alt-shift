@@ -23,7 +23,7 @@ export const NewApplicationPage = () => {
   return (
     <Layout align="top-left" gap="32" isColumn>
       <MainHeader />
-      <Layout align="top-left" isWide gap="32">
+      <div className={styles.container}>
         <div className={styles.column}>
           <NewApplicationForm onSubmit={handleSubmit} isPending={isPending} />
         </div>
@@ -40,7 +40,7 @@ export const NewApplicationPage = () => {
             }}
           />
         </div>
-      </Layout>
+      </div>
       <Jumbotron />
     </Layout>
   );

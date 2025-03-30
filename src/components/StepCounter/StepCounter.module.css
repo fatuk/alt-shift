@@ -1,3 +1,5 @@
+@import "styles/media.css";
+
 .root {
   display: flex;
   flex-direction: var(--counter-direction);
@@ -9,6 +11,10 @@
   display: flex;
   order: var(--counter-label-order);
   color: var(--color-text-tertiary);
+}
+
+.sm .label {
+  display: none;
 }
 
 .dots {
@@ -47,4 +53,10 @@
   --counter-gap: 8px;
   --counter-label-order: 1;
   --counter-step-width: 32px;
+}
+
+@media (--md) {
+  .sm .label {
+    display: flex;
+  }
 }
