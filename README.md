@@ -2,6 +2,8 @@
 
 ## React Developer Test Assignment
 
+[Demo](https://alt-shift.onrender.com)
+
 ### Useful scripts
 
 - `npm start dev` - start the project in development mode
