@@ -44,7 +44,7 @@ export const NewApplicationForm = ({ isPending, onSubmit }: Props) => {
           </h1>
           <Divider />
         </Layout>
-        <Layout align="top-left" gap="16" isWide>
+        <div className={styles.container}>
           <InputField
             name="jobTitle"
             label="Job title"
@@ -57,7 +57,7 @@ export const NewApplicationForm = ({ isPending, onSubmit }: Props) => {
             placeholder="Apple"
             required
           />
-        </Layout>
+        </div>
         <InputField
           name="goodAt"
           label="I am good at..."
